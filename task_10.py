@@ -25,7 +25,7 @@ def maxlist(a: list) -> int:
     if len(a) == 1:
         return a[0]
     
-    if int(a[0]) > maxlist(a[1:]):
+    if a[0] > maxlist(a[1:]):
         return a[0]
     else:
         return maxlist(a[1:])
