@@ -11,34 +11,27 @@ def get_user_list() -> list:
 
     return user_list
 
-
-def ind_maxlist(a: list, 
-                index: int = 0, 
-                max_val = None, 
-                max_index = None) -> int:
+    
+def ind_maxlist(a):
     '''
-    The function find index of max element in user list using recursion.
+    The function find maximum element in list of integers using recursion.
     
     Args:
         a: List of numbers
-        index: Index that the check starts from
-        max_val: Max element in list
-        max_index: Index of max element in list
         
     Returns:
         int: Index of max element
     '''
     if len(a) == 1:
-        return index
+        return 0
     
-    if index == len(a):
-        return max_index
-
-    if max_val is None or a[index] > max_val:
-        max_val = a[index]
-        max_index = index
-
-    return ind_maxlist(a, index + 1, max_val, max_index)
+    # Add 1, since each iteration we go deeper into the list by 1
+    max_index_rest = ind_maxlist(a[1:]) + 1
+    
+    if a[0] > a[max_index_rest]:
+        return 0
+    else:
+        return max_index_rest
 
 
 if __name__ == '__main__':
