@@ -26,15 +26,16 @@ def odd_list(a: list, n: int = None) -> list:
     if n == 0:
         return []
     
+    other = odd_list(a[1:], n - 1)
+    
+    if a[0] % 2 == 0:
+        return [a[0]] + other
     else:
-        rest = odd_list(a[1:], n - 1)
-        if a[0] % 2 == 0:
-            return [a[0]] + rest
-        else:
-            return rest
+        return other
 
 
 if __name__ == '__main__':
     user_list = get_user_list()
     n = int(input('Сколько элементов в списке: '))
+
     print(odd_list(user_list, n))
